@@ -1,25 +1,53 @@
+#define _USE_MATH_DEFINES
+
+#include <memory>
+#include <cmath>
 #include <SFML/Graphics.hpp>
+#include "config.hpp"
+#include "IRender.hpp"
+#include "SFMLRender.hpp"
+
+static const Config CONFIG = {
+    {64},
+    std::vector<std::vector<char>>{
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 1, 1, 0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 0, 0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 0, 0, 1, 0, 0, 1},
+        {1, 0, 0, 1, 0, 1, 1, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    }};
+
+std::pair<float, float> getEndPosition(const std::pair<float, float> &start, float direction)
+{
+  auto degree = direction * (M_PI / 180);
+
+  return std::pair<float, float>{start.first + (cosf(degree) * 50), start.second + (sinf(degree) * 50)};
+}
 
 int main()
 {
-  auto window = sf::RenderWindow{{200u, 200u}, "CMake SFML Project"};
-  window.setFramerateLimit(144);
+  auto speed = 50.f;
+  auto direction = 0.f;
+  std::pair<float, float> start{100.f, 100.f};
+  sf::Clock clock;
+  std::unique_ptr<IRender> render = std::make_unique<SFMLRender>();
 
-  auto shape = sf::CircleShape(100.f);
-  shape.setFillColor(sf::Color::Green);
+  render->init();
 
-  while (window.isOpen())
+  while (render->isOpen())
   {
-    for (auto event = sf::Event{}; window.pollEvent(event);)
-    {
-      if (event.type == sf::Event::Closed)
-      {
-        window.close();
-      }
-    }
+    auto gameTick = clock.getElapsedTime();
+    clock.restart();
 
-    window.clear();
-    window.draw(shape);
-    window.display();
+    direction += speed * gameTick.asSeconds();
+    auto end = getEndPosition(start, direction);
+    render->drawLine(start, end);
+
+    render->render();
   }
 }
