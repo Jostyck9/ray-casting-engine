@@ -1,12 +1,12 @@
-#ifndef __IRENDER_H__
-#define __IRENDER_H__
+#ifndef __IRENDERER_H__
+#define __IRENDERER_H__
 
 #include <utility>
 
-class IRender
+class IRenderer
 {
 public:
-  virtual ~IRender() = default;
+  virtual ~IRenderer() = default;
 
   virtual void init() = 0;
 
@@ -17,4 +17,4 @@ public:
   virtual bool isOpen() = 0;
 };
 
-#endif // __IRENDER_H__
+#endif // __IRENDERER_H__

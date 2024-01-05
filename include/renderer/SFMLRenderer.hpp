@@ -1,15 +1,15 @@
-#ifndef __SFMLRENDER_H__
-#define __SFMLRENDER_H__
+#ifndef __SFMLRENDERER_H__
+#define __SFMLRENDERER_H__
 
 #include <SFML/Graphics.hpp>
-#include "IRender.hpp"
+#include "IRenderer.hpp"
 
-class SFMLRender : public IRender
+class SFMLRenderer : public IRenderer
 {
 private:
   std::pair<unsigned int, unsigned int> _windowSize = {
-      200u,
-      200u,
+      600u,
+      600u,
   };
   unsigned int _framerateLimit = 144;
   sf::RenderWindow _window;
@@ -27,4 +27,4 @@ private:
   void _manageEvents();
 };
 
-#endif // __SFMLRENDER_H__
+#endif // __SFMLRENDERER_H__

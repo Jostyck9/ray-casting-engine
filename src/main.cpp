@@ -1,11 +1,8 @@
-#define _USE_MATH_DEFINES
-
 #include <memory>
-#include <cmath>
-#include <SFML/Graphics.hpp>
 #include "config.hpp"
-#include "IRender.hpp"
-#include "SFMLRender.hpp"
+#include "IRenderer.hpp"
+#include "SFMLRenderer.hpp"
+#include "Engine.hpp"
 
 static const Config CONFIG = {
     {64},
@@ -22,32 +19,10 @@ static const Config CONFIG = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
     }};
 
-std::pair<float, float> getEndPosition(const std::pair<float, float> &start, float direction)
-{
-  auto degree = direction * (M_PI / 180);
-
-  return std::pair<float, float>{start.first + (cosf(degree) * 50), start.second + (sinf(degree) * 50)};
-}
-
 int main()
 {
-  auto speed = 50.f;
-  auto direction = 0.f;
-  std::pair<float, float> start{100.f, 100.f};
-  sf::Clock clock;
-  std::unique_ptr<IRender> render = std::make_unique<SFMLRender>();
+  std::shared_ptr<IRenderer> renderer = std::make_shared<SFMLRenderer>();
+  Engine engine(renderer);
 
-  render->init();
-
-  while (render->isOpen())
-  {
-    auto gameTick = clock.getElapsedTime();
-    clock.restart();
-
-    direction += speed * gameTick.asSeconds();
-    auto end = getEndPosition(start, direction);
-    render->drawLine(start, end);
-
-    render->render();
-  }
+  engine.start();
 }
