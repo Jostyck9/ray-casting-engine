@@ -2,7 +2,7 @@
 
 void SFMLRenderer::init()
 {
-  this->_window.create({this->_windowSize.first, this->_windowSize.second}, "RayCasting Engine");
+  this->_window.create({this->_windowSize.first, this->_windowSize.second}, "RayCasting Engine", sf::Style::Close | sf::Style::Titlebar);
   this->_window.setFramerateLimit(this->_framerateLimit);
 }
 

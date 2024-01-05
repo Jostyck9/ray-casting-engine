@@ -13,7 +13,7 @@ void Engine::start()
 {
   auto speed = 50.f;
   auto direction = 0.f;
-  std::pair<float, float> start{300.f, 300.f};
+  std::pair<float, float> start{320.f, 240.f};
   sf::Clock clock;
 
   this->_renderer->init();

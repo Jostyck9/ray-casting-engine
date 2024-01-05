@@ -8,8 +8,8 @@ class SFMLRenderer : public IRenderer
 {
 private:
   std::pair<unsigned int, unsigned int> _windowSize = {
-      600u,
-      600u,
+      640u,
+      480u,
   };
   unsigned int _framerateLimit = 144;
   sf::RenderWindow _window;
