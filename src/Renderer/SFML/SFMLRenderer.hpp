@@ -2,19 +2,19 @@
 #define __SFMLRENDERER_H__
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "IRenderer.hpp"
+#include "Settings.hpp"
 
 class SFMLRenderer : public IRenderer
 {
 private:
-  std::pair<unsigned int, unsigned int> _windowSize = {
-      640u,
-      480u,
-  };
-  unsigned int _framerateLimit = 144;
+  std::shared_ptr<Settings> _settings;
   sf::RenderWindow _window;
 
 public:
+  SFMLRenderer(const std::shared_ptr<Settings> &settings);
+
   void init() override;
 
   void drawLine(const std::pair<float, float> &start, const std::pair<float, float> &end, float size = 1.f) override;

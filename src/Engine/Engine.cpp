@@ -4,9 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include "Engine.hpp"
 
-Engine::Engine(std::shared_ptr<IRenderer> &render)
+Engine::Engine(const std::shared_ptr<IRenderer> &render, const std::shared_ptr<Settings> &settings)
 {
   this->_renderer = render;
+  this->_settings = settings;
 }
 
 void Engine::start()

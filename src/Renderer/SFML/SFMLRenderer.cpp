@@ -3,10 +3,15 @@
 #include <cmath>
 #include "SFMLRenderer.hpp"
 
+SFMLRenderer::SFMLRenderer(const std::shared_ptr<Settings> &settings)
+{
+  this->_settings = settings;
+}
+
 void SFMLRenderer::init()
 {
-  this->_window.create({this->_windowSize.first, this->_windowSize.second}, "RayCasting Engine", sf::Style::Close | sf::Style::Titlebar);
-  this->_window.setFramerateLimit(this->_framerateLimit);
+  this->_window.create({this->_settings->getWindowSize().first, this->_settings->getWindowSize().second}, "RayCasting Engine", sf::Style::Close | sf::Style::Titlebar);
+  this->_window.setFramerateLimit(this->_settings->getFramerateLimit());
 }
 
 void SFMLRenderer::drawLine(const std::pair<float, float> &start, const std::pair<float, float> &end, float size)

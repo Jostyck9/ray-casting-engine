@@ -10,8 +10,18 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(CMakeSFMLProject src/main.cpp src/SFMLRenderer.cpp src/Engine.cpp)
-target_include_directories(CMakeSFMLProject PUBLIC include include/renderer)
+add_executable(CMakeSFMLProject 
+    src/main.cpp 
+    src/Renderer/SFML/SFMLRenderer.cpp 
+    src/Engine/Engine.cpp 
+    src/Settings/Settings.cpp
+)
+target_include_directories(CMakeSFMLProject PUBLIC  
+    src/Renderer 
+    src/Renderer/SFML 
+    src/Engine
+    src/Settings
+)
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)
 

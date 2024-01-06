@@ -3,14 +3,16 @@
 
 #include <memory>
 #include "IRenderer.hpp"
+#include "Settings.hpp"
 
 class Engine
 {
 private:
   std::shared_ptr<IRenderer> _renderer;
+  std::shared_ptr<Settings> _settings;
 
 public:
-  Engine(std::shared_ptr<IRenderer> &renderer);
+  Engine(const std::shared_ptr<IRenderer> &renderer, const std::shared_ptr<Settings> &settings);
 
   void start();
 
