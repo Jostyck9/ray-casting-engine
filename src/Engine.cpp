@@ -24,7 +24,7 @@ void Engine::start()
 
     direction += speed * gameTick.asSeconds();
     auto end = this->_getEndPosition(start, direction);
-    this->_renderer->drawLine(start, end);
+    this->_renderer->drawLine(start, end, 50);
 
     this->_renderer->render();
   }

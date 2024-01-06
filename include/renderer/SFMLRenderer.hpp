@@ -25,6 +25,14 @@ public:
 
 private:
   void _manageEvents();
+
+  void _drawVertexLine(sf::Vector2f &start, sf::Vector2f &end);
+
+  void _drawRect(sf::Vector2f &start, sf::Vector2f &end, float size);
+
+  float _getAngle(sf::Vector2f &end);
+
+  float _norme(sf::Vector2f &vector);
 };
 
 #endif // __SFMLRENDERER_H__
