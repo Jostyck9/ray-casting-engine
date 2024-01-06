@@ -10,7 +10,7 @@ public:
 
   virtual void init() = 0;
 
-  virtual void drawLine(std::pair<float, float> &start, std::pair<float, float> &end, float size = 1.f) = 0;
+  virtual void drawLine(const std::pair<float, float> &start, const std::pair<float, float> &end, float size = 1.f) = 0;
 
   virtual void render() = 0;
 

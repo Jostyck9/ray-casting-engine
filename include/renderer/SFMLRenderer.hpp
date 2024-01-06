@@ -17,7 +17,7 @@ private:
 public:
   void init() override;
 
-  void drawLine(std::pair<float, float> &start, std::pair<float, float> &end, float size = 1.f) override;
+  void drawLine(const std::pair<float, float> &start, const std::pair<float, float> &end, float size = 1.f) override;
 
   void render() override;
 
@@ -26,13 +26,13 @@ public:
 private:
   void _manageEvents();
 
-  void _drawVertexLine(sf::Vector2f &start, sf::Vector2f &end);
+  void _drawVertexLine(const sf::Vector2f &start, const sf::Vector2f &end);
 
-  void _drawRect(sf::Vector2f &start, sf::Vector2f &end, float size);
+  void _drawRect(const sf::Vector2f &start, const sf::Vector2f &end, float size);
 
-  float _getAngle(sf::Vector2f &end);
+  float _getAngle(const sf::Vector2f &end);
 
-  float _norme(sf::Vector2f &vector);
+  float _norme(const sf::Vector2f &vector);
 };
 
 #endif // __SFMLRENDERER_H__

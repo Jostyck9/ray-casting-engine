@@ -9,7 +9,7 @@ void SFMLRenderer::init()
   this->_window.setFramerateLimit(this->_framerateLimit);
 }
 
-void SFMLRenderer::drawLine(std::pair<float, float> &start, std::pair<float, float> &end, float size)
+void SFMLRenderer::drawLine(const std::pair<float, float> &start, const std::pair<float, float> &end, float size)
 {
   if (size > 1)
   {
@@ -44,14 +44,14 @@ void SFMLRenderer::_manageEvents()
   }
 }
 
-void SFMLRenderer::_drawVertexLine(sf::Vector2f &start, sf::Vector2f &end)
+void SFMLRenderer::_drawVertexLine(const sf::Vector2f &start, const sf::Vector2f &end)
 {
   sf::Vertex line[] = {sf::Vertex(start), sf::Vertex(end)};
 
   this->_window.draw(line, 2, sf::Lines);
 }
 
-void SFMLRenderer::_drawRect(sf::Vector2f &start, sf::Vector2f &end, float size)
+void SFMLRenderer::_drawRect(const sf::Vector2f &start, const sf::Vector2f &end, float size)
 {
   sf::RectangleShape rectangle({sqrtf(powf(end.x - start.x, 2) + powf(end.y - start.y, 2)), size});
 
@@ -62,7 +62,7 @@ void SFMLRenderer::_drawRect(sf::Vector2f &start, sf::Vector2f &end, float size)
   this->_window.draw(rectangle);
 }
 
-float SFMLRenderer::_getAngle(sf::Vector2f &end)
+float SFMLRenderer::_getAngle(const sf::Vector2f &end)
 {
   sf::Vector2f start(1, 0);
 
@@ -77,7 +77,7 @@ float SFMLRenderer::_getAngle(sf::Vector2f &end)
   return angle;
 }
 
-float SFMLRenderer::_norme(sf::Vector2f &vector)
+float SFMLRenderer::_norme(const sf::Vector2f &vector)
 {
   return sqrtf(powf(vector.x, 2) + powf(vector.y, 2));
 }
