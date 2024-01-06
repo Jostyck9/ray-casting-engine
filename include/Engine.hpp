@@ -10,7 +10,7 @@ private:
   std::shared_ptr<IRenderer> _renderer;
 
 public:
-  Engine::Engine(std::shared_ptr<IRenderer> &renderer);
+  Engine(std::shared_ptr<IRenderer> &renderer);
 
   void start();
 
