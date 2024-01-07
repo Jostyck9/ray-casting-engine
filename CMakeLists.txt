@@ -15,12 +15,14 @@ add_executable(CMakeSFMLProject
     src/Renderer/SFML/SFMLRenderer.cpp 
     src/Engine/Engine.cpp 
     src/Settings/Settings.cpp
+    src/Player/Player.cpp
 )
 target_include_directories(CMakeSFMLProject PUBLIC  
     src/Renderer 
     src/Renderer/SFML 
     src/Engine
     src/Settings
+    src/Player
 )
 target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)

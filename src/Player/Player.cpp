@@ -1,9 +1,5 @@
 #include "Player.hpp"
 
-Player::Player()
-{
-}
-
 const std::pair<float, float> &Player::getPosition()
 {
   return this->_position;
@@ -23,14 +19,4 @@ const float Player::getDirection()
 void Player::setDirection(float direction)
 {
   this->_direction = direction;
-}
-
-const float Player::getFOV()
-{
-  return this->_fov;
-}
-
-void Player::setFOV(float fov)
-{
-  this->_fov = fov;
 }
